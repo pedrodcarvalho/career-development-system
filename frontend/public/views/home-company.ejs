@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/containers.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/toast.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <script src="../scripts/home-company.js" defer></script>
+    <script src="../scripts/toast.js" defer></script>
+  </head>
+  <body>
+    <nav class="container-items nav-container">
+      <ul class="menu-items flex-start">
+        <button class="burger loading" disabled>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></svg>
+        </button>
+        <div class="menu">
+          <h2>Histórico de treinamentos</h2>
+          <div class="trainings-report"></div>
+        </div>
+      </ul>
+      <h1 class="username">Seja Bem-vindo, <%= name %>!</h1>
+    </nav>
+    <section class="container-items">
+      <ul class="menu-items flex column">
+        <li>
+          <p data-item="Atividades&nbsp;no&nbsp;Sistema">Atividades&nbsp;no&nbsp;Sistema</p>
+        </li>
+        <section class="activities">
+          <div class="all-activities flex column hidden"></div>
+        </section>
+        <li>
+          <p data-item="Suas&nbsp;Vagas">Suas&nbsp;Vagas</p>
+        </li>
+        <section class="jobs">
+          <div class="your-jobs hidden">
+            <div class="box">
+              <form action="/api/jobs" method="post" class="column flex-start" id="jobs-form">
+                <h1 class="flex">Criar Vaga</h1>
+                <p>Título da vaga</p>
+                <input type="text" name="name" placeholder="Título da vaga">
+                <p>Nome da empresa</p>
+                <input type="text" name="company" placeholder="Nome da empresa">
+                <p>Descrição</p>
+                <input type="text" name="desc" placeholder="Descrição">
+                <p>Requisitos</p>
+                <input type="text" name="requirements" placeholder="Requisitos">
+                <p>Faixa salarial</p>
+                <input type="text" name="wage" placeholder="Faixa salarial (xxxx,xx)">
+                <p>Curso associado</p>
+                <input type="text" name="associated_trainings" placeholder="Cursos associados (código,código)">
+                <p>Usuários Inscritos</p>
+                <textarea rows="4" cols="30" name="subscribed_users" form="jobs-form" placeholder="Usuários Inscritos (nome,nome)"></textarea>
+                <input type="submit" value="Criar" class="spacing-wrapper">
+              </form>
+            </div>
+          </div>
+        </section>
+      </ul>
+    </section>
+    <div id="toast">
+      <div id="toast-icon">
+        <img src="../images/error.png">
+      </div>
+      <div id="description"></div>
+    </div>
+  </body>
+</html>

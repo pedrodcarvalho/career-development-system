@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/toast.css">
+    <script src="../scripts/home.js" defer></script>
+    <script src="../scripts/toast.js" defer></script>
+  </head>
+  <body>
+    <div class="signin-container">
+      <div class="flex column signin">
+        <h1>Cadastro</h1>
+        <form action="/home/signin" method="post" id="loginForm">
+          <div class="flex column login-container">
+            <input type="text" name="name" placeholder="Nome">
+            <input type="text" name="username" placeholder="E-mail">
+            <input type="password" name="password" placeholder="Senha">
+            <select name="role">
+              <option value="admin">Administrador</option>
+              <option value="student">Aluno</option>
+              <option value="company">Empresa</option>
+              <option value="mentor">Mentor</option>
+            </select>
+            <input type="submit" value="Cadastrar-se">
+          </div>
+        </form>
+        <button class="login-button">Já possui uma conta?</button>
+      </div>
+      <div class="flex column hidden login">
+        <h1>Login</h1>
+        <form action="/home/login" method="post" id="loginForm">
+          <div class="flex column login-container">
+            <input type="text" name="username" placeholder="E-mail">
+            <input type="password" name="password" placeholder="Senha">
+            <input type="submit" value="Login">
+          </div>
+        </form>
+        <button class="login-button">Cadastrar-se</button>
+      </div>
+      <div class="flex column">
+        <div id="toast">
+          <div id="toast-icon">
+            <img src="../images/error.png">
+          </div>
+          <div id="description">Erro ao criar conta!</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

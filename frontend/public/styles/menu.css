@@ -1,0 +1,54 @@
+.menu {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: grid;
+  width: 400px;
+  height: 100%;
+  background: var(--dark-white);
+  translate: -100% 0;
+  transition: translate 0.375s cubic-bezier(0.175, 0.885, 0.32, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu > h2 {
+  margin-top: 30px;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+}
+
+.burger {
+  position: relative;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger svg {
+  width: 24px;
+  height: auto;
+  cursor: pointer;
+}
+
+.open {
+  opacity: 1;
+  visibility: visible;
+  translate: 0;
+  animation: menu-in 0.375s;
+}
+
+@keyframes menu-in {
+  0% {
+    clip-path: ellipse(60% 60% at 0% 50%);
+  }
+  100% {
+    clip-path: ellipse(120% 120% at 0% 50%);
+  }
+}

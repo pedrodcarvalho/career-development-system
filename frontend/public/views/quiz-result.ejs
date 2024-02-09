@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador</title>
+    <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/containers.css">
+    <link rel="stylesheet" href="../../styles/style.css">
+  </head>
+  <body>
+    <div class="flex column spacing-wrapper">
+      <% if (pass === true) { %>
+      <h1>Parabéns, você está apto ao treinamento!</h1>
+      <p>Sua pontuação: <%= score %>/<%= questions %></p>
+      <% } else if (pass === false) { %>
+      <h1>Infelizmente você não está apto ao treinamento...</h1>
+      <p>Sua pontuação: <%= score %>/<%= questions %></p>
+      <% } else { %>
+      <h1>Você já respondeu a este quiz!</h1>
+      <% } %>
+      <a href="/home" class="back-home">Voltar para home</a>
+    </div>
+  </body>
+</html>

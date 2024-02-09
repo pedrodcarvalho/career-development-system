@@ -1,0 +1,45 @@
+.container-items {
+  background: var(--base-color);
+  padding: 8px;
+}
+
+.container-items .menu-items {
+  list-style: none;
+  display: flex;
+}
+
+.container-items .menu-items li {
+  margin: 25px;
+}
+
+.container-items .menu-items li p {
+  text-decoration: none;
+  color: var(--dark-black);
+  font-size: 2rem;
+  font-weight: 300;
+  text-decoration: 2px underline var(--font-color);
+  transition: all 0.25s ease-in-out;
+  position: relative;
+  font-weight: 400;
+  font-family: 'Dosis', sans-serif;
+}
+
+.container-items .menu-items li p::before {
+  content: attr(data-item);
+  transition: 0.25s;
+  color: var(--light-blue);
+  text-decoration: 2px underline var(--light-blue);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.container-items .menu-items li p:hover::before {
+  width: 100%;
+  transition: width 0.25s ease-in-out;
+  cursor: pointer;
+}

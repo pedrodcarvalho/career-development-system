@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/containers.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/toast.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <script src="../scripts/home-admin.js" defer></script>
+    <script src="../scripts/toast.js" defer></script>
+  </head>
+  <body>
+    <nav class="container-items nav-container">
+      <ul class="menu-items flex-start">
+        <button class="burger loading" disabled>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></svg>
+        </button>
+        <div class="menu">
+          <h2>Histórico de treinamentos</h2>
+          <div class="trainings-report"></div>
+        </div>
+      </ul>
+      <h1 class="username">Seja Bem-vindo, <%= name %>!</h1>
+    </nav>
+    <section class="container-items">
+      <ul class="menu-items flex column">
+        <li>
+          <p data-item="Treinamentos">Treinamentos</p>
+        </li>
+        <section class="trainings">
+          <div class="hidden">
+            <div class="trainings-grid"></div>
+          </div>
+        </section>
+        <li>
+          <p data-item="Cursos">Cursos</p>
+        </li>
+        <section class="courses">
+          <div class="hidden">
+            <div class="courses-grid"></div>
+          </div>
+        </section>
+        <li>
+          <p data-item="Atividades&nbsp;no&nbsp;Sistema">Atividades&nbsp;no&nbsp;Sistema</p>
+        </li>
+        <section class="activities">
+          <div class="all-activities flex column hidden"></div>
+        </section>
+        <li>
+          <p data-item="Vagas">Vagas</p>
+        </li>
+        <section class="jobs">
+          <div class="jobs-grid hidden"></div>
+        </section>
+        <li>
+          <p data-item="Testes&nbsp;(Quiz)">Testes&nbsp;(Quiz)</p>
+        </li>
+        <section class="tests">
+          <div class="tests hidden"></div>
+        </section>
+        <li>
+          <p data-item="Seus&nbsp;Treinamentos">Seus&nbsp;Treinamentos</p>
+        </li>
+        <section class="your-trainings">
+          <div class="hidden spacing-wrapper">
+            <div class="box width-wrapper">
+              <form action="/api/admin-trainings" method="post" onsubmit="getQuizQuestions()">
+                <h1 class="flex">Criar Treinamento</h1>
+                <p>Nome do treinamento</p>
+                <input type="text" name="name" placeholder="Nome do treinamento">
+                <p>Descrição</p>
+                <input type="text" name="desc" placeholder="Descrição">
+                <p>Carga horária</p>
+                <input type="text" name="workload" placeholder="Carga horária (hh:mm)">
+                <p>Início das inscrições</p>
+                <input type="date" name="enroll_start" placeholder="Início das ynscrições">
+                <p>Término das inscrições</p>
+                <input type="date" name="enroll_end" placeholder="Término das inscrições">
+                <p>Início do treinamento</p>
+                <input type="date" name="training_start" placeholder="Início do treinamento">
+                <p>Término do treinamento</p>
+                <input type="date" name="training_end" placeholder="Término do treinamento">
+                <p>Mínimo de alunos</p>
+                <input type="number" name="min_students" placeholder="Mínimo de alunos">
+                <p>Máximo de alunos</p>
+                <input type="number" name="max_students" placeholder="Máximo de alunos">
+                <input type="text" name="all_questions" id="all-questions" class="hidden">
+                <h1 class="flex">Quiz</h1>
+                <div class="quiz-question">
+                  <input type="text" id="question-1" placeholder="Digite sua questão">
+                  <input type="text" id="answer-a" placeholder="Digite a resposta certa aqui">
+                  <input type="text" id="answer-b" placeholder="Digite a resposta errada aqui">
+                  <input type="text" id="answer-c" placeholder="Digite a resposta errada aqui">
+                </div>
+                <button class="add-question" type="button">Adicionar outra questão</button>
+                <input type="submit" value="Criar" class="spacing-wrapper">
+              </form>
+            </div>
+            <div class="admin-trainings width-wrapper"></div>
+          </div>
+        </section>
+        <li>
+          <p data-item="Suas&nbsp;Vagas">Suas&nbsp;Vagas</p>
+        </li>
+        <section class="jobs">
+          <div class="your-jobs hidden">
+            <div class="box">
+              <form action="/api/jobs" method="post" class="column flex-start" id="jobs-form">
+                <h1 class="flex">Criar Vaga</h1>
+                <p>Título da vaga</p>
+                <input type="text" name="name" placeholder="Título da vaga">
+                <p>Nome da empresa</p>
+                <input type="text" name="company" placeholder="Nome da empresa">
+                <p>Descrição</p>
+                <input type="text" name="desc" placeholder="Descrição">
+                <p>Requisitos</p>
+                <input type="text" name="requirements" placeholder="Requisitos">
+                <p>Faixa salarial</p>
+                <input type="text" name="wage" placeholder="Faixa salarial (xxxx,xx)">
+                <p>Curso associado</p>
+                <input type="text" name="associated_trainings" placeholder="Cursos associados (código,código)">
+                <p>Usuários Inscritos</p>
+                <textarea rows="4" cols="30" name="subscribed_users" form="jobs-form" placeholder="Usuários Inscritos (nome,nome)"></textarea>
+                <input type="submit" value="Criar" class="spacing-wrapper">
+              </form>
+            </div>
+          </div>
+        </section>
+        <li>
+          <p data-item="Suas&nbsp;Tracks">Suas Tracks</p>
+        </li>
+        <section class="track">
+          <div class="hidden">
+            <div class="box" style="width: 600px">
+              <form action="/api/create-track" method="post" class="column flex-start">
+                <h1 class="flex">Criar Track</h1>
+                <p>Código do treinamento</p>
+                <input type="text" name="cod" placeholder="Código do treinamento">
+                <p>Cursos introdutórios</p>
+                <input type="text" name="intro_courses" placeholder="Cursos introdutórios (nome do curso, nome do curso)">
+                <p>Primeiro Case</p>
+                <input type="text" name="first_case" placeholder="Primeiro Case">
+                <p>Cursos avançados</p>
+                <input type="text" name="adv_courses" placeholder="Cursos avançados (nome do curso, nome do curso)">
+                <p>Segundo Case</p>
+                <input type="text" name="second_case" placeholder="Segundo Case">
+                <input type="submit" value="Criar" class="spacing-wrapper">
+              </form>
+            </div>
+          </div>
+        </section>
+      </ul>
+    </section>
+    <div id="toast">
+      <div id="toast-icon">
+        <img src="../images/error.png">
+      </div>
+      <div id="description"></div>
+    </div>
+  </body>
+</html>

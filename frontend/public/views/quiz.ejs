@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador</title>
+    <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/containers.css">
+    <link rel="stylesheet" href="../../styles/style.css">
+  </head>
+  <body>
+    <div class="flex column spacing-wrapper">
+      <h1>Quiz</h1>
+      <form action="/api/quiz/<%= cod %>" method="POST" class="quiz spacing-wrapper">
+        <% questionIndex = 0 %> <% for (let i = 0; i < items.length; i++) { %> <% if (items[i].startsWith('Pergunta')) { %>
+        <h3><%= items[i] %></h3>
+        <% questionIndex++ %> <% } else { %>
+        <div class="quiz-answer">
+          <input type="checkbox" id="<%= i %>" name="answer-<%= questionIndex %>" value="<%= items[i] %>">
+          <label for="<%= i %>"><%= items[i] %></label>
+        </div>
+        <% } %> <% } %>
+        <br>
+        <input type="submit" value="Enviar">
+      </form>
+      <div class="score">
+        <h3 id="score"></h3>
+      </div>
+    </div>
+  </body>
+</html>

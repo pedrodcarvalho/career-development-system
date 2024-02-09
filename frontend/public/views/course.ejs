@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador</title>
+    <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/containers.css">
+    <link rel="stylesheet" href="../../styles/style.css">
+  </head>
+  <body>
+    <div class="flex column spacing-wrapper">
+      <h1>Track do treinamento: <%= courseName %></h1>
+      <h2>Cursos introdutórios</h2>
+      <div class="box">
+        <% for (let i = 0; i < introCourses.length; i++) { %>
+        <ul>
+          <a href="#"><%= introCourses[i] %></a>
+        </ul>
+        <% } %>
+      </div>
+      <h2>Primeiro Case</h2>
+      <div class="box">
+        <p style="font-weight: normal"><%= firstCase %></p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus velit quis suscipit vel nobis eos totam explicabo aspernatur voluptatum eligendi, quae voluptate molestiae debitis placeat commodi beatae. Dolor, beatae placeat.</p>
+      </div>
+      <h2>Cursos avançados & mentoria</h2>
+      <div class="box">
+        <% for (let i = 0; i < advCourses.length; i++) { %>
+        <ul>
+          <a href="#"><%= advCourses[i] %></a>
+        </ul>
+        <% } %>
+      </div>
+      <h2>Segundo Case</h2>
+      <div class="box">
+        <p style="font-weight: normal"><%= secondCase %></p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus velit quis suscipit vel nobis eos totam explicabo aspernatur voluptatum eligendi, quae voluptate molestiae debitis placeat commodi beatae. Dolor, beatae placeat.</p>
+      </div>
+      <div class="box">
+        <form action="/api/course/update" method="post" class="flex column">
+          <div class="flex course-modal">
+            <label for="completed">Curso completo?</label>
+            <input type="checkbox" id="completed" name="completed">
+            <input type="text" name="cod" value="<%= cod %>" class="hidden">
+          </div>
+          <input type="submit" value="Enviar">
+        </form>
+      </div>
+      <a href="/home" class="back-home">Voltar para home</a>
+    </div>
+  </body>
+</html>
